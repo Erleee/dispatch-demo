@@ -1,0 +1,16 @@
+name: Repository Dispatch Demo
+
+on:
+  repository_dispatch:
+    types: [deploy]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 顯示事件資訊
+        run: |
+          echo "Dispatch Event Received"
+          echo "Event Type = ${{ github.event.action }}"
+          echo "Environment = ${{ github.event.client_payload.environment }}"
